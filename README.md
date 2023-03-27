@@ -17,8 +17,8 @@ npm i styled-reset
 npm i react-router-dom@6
 
 // 리덕스 설치
-npm i redux
-npm i react-redux
+//npm i redux
+//npm i react-redux
 ```
 
 ### 프로젝트 진행순서
@@ -38,3 +38,9 @@ npm i react-redux
 
 - DiaryStateContext, DiaryDispatchContext 각각 state와 dispatch를 관리할 컨텍스트 생성
 - value에 각각 data와 on함수 전달
+
+3. 상태관리 함수 추가
+
+- actions.js, reducer.js 생성
+- 리덕스 대신 React Context API와 useReducer 훅을 활용할 수 있습니다.
+  (이 방법은 Redux보다 더 가볍고 간단한 구현이 가능)
