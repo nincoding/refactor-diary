@@ -1,7 +1,12 @@
 import React, { useReducer, useRef } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { DiaryStateContext, DiaryDispatchContext } from "./contexts/DiaryContext";
 import { createDiary, removeDiary, editDiary } from './store/actions';
 import reducer from "./store/reducer";
+import Home from "./pages/Home";
+import New from "./pages/New";
+import Edit from "./pages/Edit";
+import Diary from "./pages/Diary";
 
 function App() {
 
@@ -28,9 +33,16 @@ function App() {
       onRemove,
       onEdit
     }}>
+    <BrowserRouter>
     <div className="App">
-      <h2>나는 앱이다.</h2>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/edit" element={<Edit />} />
+        <Route path="/diary/:id" element={<Diary />} />
+      </Routes>
     </div>
+    </BrowserRouter>
     </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
   );
