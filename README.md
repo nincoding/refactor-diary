@@ -20,3 +20,16 @@ npm i react-router-dom@6
 npm i redux
 npm i react-redux
 ```
+
+### 프로젝트 진행순서
+
+1. 글로벌 스타일 추가
+
+- 구글폰트 추가
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap"
+  rel="stylesheet"
+/>
+```
