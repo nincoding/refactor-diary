@@ -25,7 +25,7 @@ npm i react-redux
 
 1. 글로벌 스타일 추가
 
-- 구글폰트 추가
+- 구글폰트 추가 (GlobalStyle 스타일 컴포넌트)
 
 ```html
 <link
@@ -33,3 +33,8 @@ npm i react-redux
   rel="stylesheet"
 />
 ```
+
+2. contexts 추가
+
+- DiaryStateContext, DiaryDispatchContext 각각 state와 dispatch를 관리할 컨텍스트 생성
+- value에 각각 data와 on함수 전달
