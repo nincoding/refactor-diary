@@ -6,10 +6,10 @@ const MyHeader = ({ headText, leftChild, rightChild }) => {
         {leftChild}
       </div>
       <div className="center">
-        {rightChild}
+        {headText}
       </div>
       <div className="right">
-        {headText}
+        {rightChild}
       </div>
     </Header>
   )
