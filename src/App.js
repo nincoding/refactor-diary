@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useContext, useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { DiaryStateContext, DiaryDispatchContext } from "./contexts/DiaryContext";
 import { createDiary, removeDiary, editDiary } from './store/actions';
@@ -7,10 +7,11 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
+import dummyData from "./data/dummyData";
 
 function App() {
 
-  const [ data, dispatch ] = useReducer(reducer, []);
+  const [ data, dispatch ] = useReducer(reducer, dummyData);
   const dataId = useRef(0);
 
   const onCreate = (date, content, emotion) => {
