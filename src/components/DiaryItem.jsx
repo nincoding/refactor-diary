@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import DiaryItemWrapper from "../styles/DiaryItemWrapper";
 import EmotionWrapper from "../styles/EmotionWrapper";
-import emotions from "../data/emotions";
+import { emotions } from "../data/emotions";
 import InfoWrapper from "../styles/InfoWrapper";
 import BtnWrapper from "../styles/BtnWrapper";
 import MyButton from "./MyButton";
