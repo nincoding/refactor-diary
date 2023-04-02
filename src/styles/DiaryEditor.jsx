@@ -36,3 +36,9 @@ export const Textarea = styled.textarea`
   background-color: #ececec;
   padding: 20px;
 `;
+
+export const ControlBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
