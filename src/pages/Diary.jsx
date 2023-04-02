@@ -6,6 +6,7 @@ import MyButton from "../components/MyButton";
 import getStringDate from "../utils/getStringDate";
 import { emotionList, emotions } from "../data/emotions";
 import { DiaryEmotionWrapper, DiarySection, DiaryText } from "../styles/EmotionWrapper";
+import { DiaryContent, DiaryWrapper } from "../styles/DiaryDetail";
 
 const Diary = () => {
 
@@ -51,6 +52,12 @@ const Diary = () => {
               <img className="diary_img" src={currentEmotionData.emotion_img} />
               {currentEmotionData.emotion_descript}
             </DiaryEmotionWrapper>
+          </DiarySection>
+          <DiarySection>
+            <DiaryText>오늘의 일기</DiaryText>
+            <DiaryWrapper>
+              <DiaryContent>{data.content}</DiaryContent>
+            </DiaryWrapper>
           </DiarySection>
         </article>
       </div>
