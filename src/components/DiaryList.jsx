@@ -6,6 +6,7 @@ import { SORT_OPTIONS, FILTER_OPTIONS } from "../constants/options";
 import { BUTTON_TYPES } from "../constants/buttonType";
 import MyButton from "./MyButton";
 import MenuWrapper from "../styles/MenuWrapper";
+import DiaryItem from "./DiaryItem";
 
 const DiaryList = ({ diaryList }) => {
 
@@ -58,7 +59,8 @@ const DiaryList = ({ diaryList }) => {
       </div>
       </MenuWrapper>
       { getProcessedDiaryList().map((it) => (
-        <div key={it.id}>{it.content} {it.emotion}</div>
+        //<div key={it.id}>{it.content} {it.emotion}</div>
+        <DiaryItem key={it.id} {...it}/>
       ))}
     </div>
   )
