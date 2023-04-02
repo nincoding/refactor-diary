@@ -1,16 +1,17 @@
 import { useState } from "react";
 import ControlMenu from "./ControlMenu";
 import { sortOptionList, filterOptionList } from "../data/optionList";
+import { SORT_OPTIONS, FILTER_OPTIONS } from "../constants/options";
 
 const DiaryList = ({ diaryList }) => {
 
-  const [ sortType, setSortType ] = useState('latest');
-  const [ filter, setFilter ] = useState('all');
+  const [ sortType, setSortType ] = useState(SORT_OPTIONS.LATEST);
+  const [ filter, setFilter ] = useState(FILTER_OPTIONS.ALL);
 
   const getProcessedDiaryList = () => {
 
     const filterCallback = (item) => {
-      if (filter === 'good') {
+      if (filter === FILTER_OPTIONS.GOOD) {
         return parseInt(item.emotion) <= 3;
       } else {
         return parseInt(item.emotion) > 3;
@@ -18,7 +19,7 @@ const DiaryList = ({ diaryList }) => {
     }
 
     const compare = (a, b) => {
-      if (sortType === 'latest') {
+      if (sortType === SORT_OPTIONS.LATEST) {
         return parseInt(b.date) - parseInt(a.date);
       } else {
         return parseInt(a.date) - parseInt(b.date);
@@ -26,7 +27,7 @@ const DiaryList = ({ diaryList }) => {
     }
 
     const copyList = JSON.parse(JSON.stringify(diaryList));
-    const filteredList = filter === 'all' ? copyList : copyList.filter((it) => filterCallback(it));
+    const filteredList = filter === FILTER_OPTIONS.ALL ? copyList : copyList.filter((it) => filterCallback(it));
     const sortedList = filteredList.sort(compare);
 
     return sortedList;
