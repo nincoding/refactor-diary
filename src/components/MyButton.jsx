@@ -1,8 +1,9 @@
 import Button from '../styles/Button';
+import { BUTTON_TYPES } from '../constants/buttonType';
 
 const MyButton = ({ text, type, onClick }) => {
 
-  const btnType = ['positive', 'negative'].includes(type) ? type : 'default';
+  const btnType = [BUTTON_TYPES.POSITIVE, BUTTON_TYPES.NEGATIVE].includes(type) ? type : BUTTON_TYPES.DEFAULT;
 
   return (
     <Button
@@ -15,7 +16,7 @@ const MyButton = ({ text, type, onClick }) => {
 }
 
 MyButton.defaultProps = {
-  type: 'default',
+  type: BUTTON_TYPES.DEFAULT,
 };
 
 export default MyButton;
