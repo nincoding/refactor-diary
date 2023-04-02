@@ -23,3 +23,16 @@ export const InputDate = styled.input`
   font-family: "Nanum Pen Script";
   font-size: 20px;
 `;
+
+export const Textarea = styled.textarea`
+  font-family: "Nanum Pen Script";
+  font-size: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+  padding: 20px;
+`;
