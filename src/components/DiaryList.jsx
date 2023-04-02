@@ -5,6 +5,7 @@ import { sortOptionList, filterOptionList } from "../data/optionList";
 import { SORT_OPTIONS, FILTER_OPTIONS } from "../constants/options";
 import { BUTTON_TYPES } from "../constants/buttonType";
 import MyButton from "./MyButton";
+import MenuWrapper from "../styles/MenuWrapper";
 
 const DiaryList = ({ diaryList }) => {
 
@@ -39,14 +40,23 @@ const DiaryList = ({ diaryList }) => {
   }
 
   return (
-    <div>
-      <ControlMenu value={sortType} onChange={setSortType} optionList={sortOptionList}/>
-      <ControlMenu 
+    <div className="DiaryList">
+      <MenuWrapper>
+      <div className="left_col">
+        <ControlMenu 
+        value={sortType} 
+        onChange={setSortType} 
+        optionList={sortOptionList}/>
+        <ControlMenu 
          value={filter}
          onChange={setFilter}
          optionList={filterOptionList}
-      />
-      <MyButton type={BUTTON_TYPES.POSITIVE} text={'새 일기쓰기'} onClick={() => navigate('/new')}/>
+        />
+      </div>
+      <div className="right_col">
+        <MyButton type={BUTTON_TYPES.POSITIVE} text={'새 일기쓰기'} onClick={() => navigate('/new')}/>
+      </div>
+      </MenuWrapper>
       { getProcessedDiaryList().map((it) => (
         <div key={it.id}>{it.content} {it.emotion}</div>
       ))}

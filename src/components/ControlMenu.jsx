@@ -1,13 +1,14 @@
+import MenuSelect from "../styles/MenuSelect";
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select 
+    <MenuSelect 
       value={value}
       onChange={(e) => onChange(e.target.value)}
     >
       { optionList.map((it, idx) => (
         <option value={it.value} key={idx}>{it.name}</option>
       ))}
-    </select>
+    </MenuSelect>
   )
 }
 
