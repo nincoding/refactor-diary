@@ -11,20 +11,21 @@ import Diary from "./pages/Diary";
 function App() {
 
   const [ data, dispatch ] = useReducer(reducer, []);
-  const dataId = useRef(1);
 
   useEffect(() => {
     const localData = localStorage.getItem('diary');
-    console.log(localData)
-    
     
     if (localData) {
       const diaryList = JSON.parse(localData).sort((a, b) => parseInt(b.id) - parseInt(a.id));
-      dataId.current = parseInt(diaryList[0].id) + 1;
+      dataId.current =  diaryList.length > 0 ? parseInt(diaryList[0].id) + 1 : 1;
 
       dispatch(initDiary(diaryList));
+    } else {
+      dataId.current = 1;
     }
   }, [])
+
+  const dataId = useRef(1);
 
   const onCreate = (date, content, emotion) => {
     dispatch(createDiary(date, content, emotion, dataId.current));
