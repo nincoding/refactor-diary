@@ -1,0 +1,24 @@
+name: Firebase Hosting CI/CD
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      - name: Build and Deploy
+        run: |
+          npm install
+          npm run build
+          firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}"
+        env:
+          CI: true
