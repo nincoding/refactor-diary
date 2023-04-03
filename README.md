@@ -44,3 +44,7 @@ npm i react-router-dom@6
 - actions.js, reducer.js 생성
 - 리덕스 대신 React Context API와 useReducer 훅을 활용할 수 있습니다.
   (이 방법은 Redux보다 더 가볍고 간단한 구현이 가능)
+
+4. firebase 배포
+
+배포 URL : https://nincoding-react-solo-project.web.app/
