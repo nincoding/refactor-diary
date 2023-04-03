@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
+import { PATH_URL, LOCAL_STORAGE_KEY } from "./constants/stringValues";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
 
   const [ data, dispatch ] = useReducer(reducer, [], 
     (initialState) => {
-      const localData = localStorage.getItem("diary");
+      const localData = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (localData) {
         return JSON.parse(localData);
       }
@@ -45,10 +46,10 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/edit/:id" element={<Edit />} />
-        <Route path="/diary/:id" element={<Diary />} />
+        <Route path={PATH_URL.HOME} element={<Home />} />
+        <Route path={PATH_URL.NEW} element={<New />} />
+        <Route path={PATH_URL.EDIT} element={<Edit />} />
+        <Route path={PATH_URL.DIARY} element={<Diary />} />
       </Routes>
     </div>
     </BrowserRouter>

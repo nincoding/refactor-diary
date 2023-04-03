@@ -7,6 +7,7 @@ import { BUTTON_TYPES } from "../constants/buttonType";
 import MyButton from "./MyButton";
 import MenuWrapper from "../styles/MenuWrapper";
 import DiaryItem from "./DiaryItem";
+import { MOVE, PATH_URL } from "../constants/stringValues";
 
 const DiaryList = ({ diaryList }) => {
 
@@ -55,7 +56,7 @@ const DiaryList = ({ diaryList }) => {
         />
       </div>
       <div className="right_col">
-        <MyButton type={BUTTON_TYPES.POSITIVE} text={'새 일기쓰기'} onClick={() => navigate('/new')}/>
+        <MyButton type={BUTTON_TYPES.POSITIVE} text={MOVE.CREATE} onClick={() => navigate(PATH_URL.NEW)}/>
       </div>
       </MenuWrapper>
       { getProcessedDiaryList().map((it) => (

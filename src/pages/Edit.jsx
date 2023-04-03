@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { DiaryStateContext } from "../contexts/DiaryContext";
 import DiaryEditor from "../components/DiaryEditor";
+import { PATH_URL, MESSAGES, TITLES, TAG_ID } from "../constants/stringValues";
 
 const Edit = () => {
 
@@ -12,8 +13,8 @@ const Edit = () => {
   const diaryList = useContext(DiaryStateContext);
 
   useEffect(() => {
-    const titleElement = document.getElementsByTagName('title')[0];
-    titleElement.innerHTML = `감정 일기장 - ${id}번 일기 수정`;
+    const titleElement = document.getElementsByTagName(TAG_ID.TITLE)[0];
+    titleElement.innerHTML = `${TITLES.MAIN} - ${id}${TITLES.EDIT}`;
   }, []);
 
   useEffect(() => {
@@ -23,8 +24,8 @@ const Edit = () => {
       if (targetDiary) {
         setOriginData(targetDiary);
       } else {
-        alert("없는 일기입니다.");
-        navigate('/', { replace: true });
+        alert(MESSAGES.NO_DATA_TEXT);
+        navigate(PATH_URL.HOME, { replace: true });
       }
     };
   }, [id, diaryList]);

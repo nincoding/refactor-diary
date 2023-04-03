@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE_KEY } from '../constants/stringValues';
 import { INIT, CREATE, REMOVE, EDIT } from '../constants/actionTypes';
 
 const reducer = (state, action) => {
@@ -26,7 +27,7 @@ const reducer = (state, action) => {
       return state;
   }
 
-  localStorage.setItem('diary', JSON.stringify(newState));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState));
 
   return newState;
 }

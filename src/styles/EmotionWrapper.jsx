@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { MainText, Section } from "./DiaryEditor";
 
 export const EmotionWrapper = styled.div`

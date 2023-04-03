@@ -3,6 +3,7 @@ import MyHeader from '../components/MyHeader';
 import MyButton from '../components/MyButton';
 import { DiaryStateContext } from '../contexts/DiaryContext';
 import DiaryList from '../components/DiaryList';
+import { MOVE } from '../constants/stringValues';
 
 const Home = () => {
 
@@ -52,8 +53,8 @@ const Home = () => {
     <div>
       <MyHeader 
         headText={headText}
-        leftChild={<MyButton text={"<"} onClick={decreaseMonth}/>}
-        rightChild={<MyButton text={">"} onClick={increaseMonth}/>}
+        leftChild={<MyButton text={MOVE.BACK} onClick={decreaseMonth}/>}
+        rightChild={<MyButton text={MOVE.FORTH} onClick={increaseMonth}/>}
       />
       <DiaryList diaryList={data} />
     </div>

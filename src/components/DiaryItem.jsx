@@ -6,6 +6,7 @@ import { emotions } from "../data/emotions";
 import InfoWrapper from "../styles/InfoWrapper";
 import BtnWrapper from "../styles/BtnWrapper";
 import MyButton from "./MyButton";
+import { MOVE, PATH_URL } from "../constants/stringValues";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
 
@@ -14,11 +15,11 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   const navigate = useNavigate();
 
   const goDetail = () => {
-    navigate(`/diary/${id}`);
+    navigate(`${PATH_URL.DIARY_FRONT}${id}`);
   }
 
   const goEdit = () => {
-    navigate(`/edit/${id}`);
+    navigate(`${PATH_URL.EDIT_FRONT}${id}`);
   }
 
   return (
@@ -35,7 +36,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
         </div>
       </InfoWrapper>
       <BtnWrapper>
-        <MyButton text={"수정하기"} onClick={goEdit}/>
+        <MyButton text={MOVE.EDIT} onClick={goEdit}/>
       </BtnWrapper>
     </DiaryItemWrapper>
   )

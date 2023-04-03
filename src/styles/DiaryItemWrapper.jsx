@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const DiaryItemWrapper = styled.div`
   padding: 15px 0px;

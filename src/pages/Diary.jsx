@@ -7,6 +7,7 @@ import getStringDate from "../utils/getStringDate";
 import { emotionList, emotions } from "../data/emotions";
 import { DiaryEmotionWrapper, DiarySection, DiaryText } from "../styles/EmotionWrapper";
 import { DiaryContent, DiaryWrapper } from "../styles/DiaryDetail";
+import { MOVE, PATH_URL, MESSAGES, TITLES, TAG_ID } from "../constants/stringValues";
 
 const Diary = () => {
 
@@ -17,8 +18,8 @@ const Diary = () => {
   const [ data, setData ] = useState();
 
   useEffect(() => {
-    const titleElement = document.getElementsByTagName('title')[0];
-    titleElement.innerHTML = `감정 일기장 - ${id}번 일기`;
+    const titleElement = document.getElementsByTagName(TAG_ID.TITLE)[0];
+    titleElement.innerHTML = `${TITLES.MAIN} - ${id}${TITLES.DIARY}`;
   }, []);
 
   useEffect(() => {
@@ -27,14 +28,14 @@ const Diary = () => {
     if (targetDiary) {
       setData(targetDiary);
     } else {
-      alert("없는 일기입니다.");
-      navigate('/', { replace : true });
+      alert(MESSAGES.NO_DATA_TEXT);
+      navigate(PATH_URL.HOME, { replace : true });
     }
   }, [id, diaryList])
 
   if (!data) {
     return (
-      <div className="DiaryPage">로딩중입니다...</div>
+      <div className="DiaryPage">{MESSAGES.LODING_TEXT}</div>
     )
   } else {
 
@@ -47,8 +48,8 @@ const Diary = () => {
       <div className="DiaryPage">
         <MyHeader 
           headText={`${getStringDate(new Date(data.date))} 기록`}
-          leftChild={<MyButton text={'< 뒤로가기'} onClick={() => navigate(-1)}/>}
-          rightChild={<MyButton text={'수정하기'} onClick={() => navigate(`/edit/${data.id}`)} />}
+          leftChild={<MyButton text={MOVE.BACK} onClick={() => navigate(-1)}/>}
+          rightChild={<MyButton text={MOVE.EDIT} onClick={() => navigate(`${PATH_URL.EDIT_FRONT}${data.id}`)} />}
         />
         <article>
           <DiarySection>

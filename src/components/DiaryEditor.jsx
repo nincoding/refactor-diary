@@ -7,8 +7,8 @@ import getStringDate from "../utils/getStringDate";
 import { MainText, InputDate, Textarea, ControlBox } from "../styles/DiaryEditor";
 import { emotionList } from "../data/emotions";
 import EmotionItem from "./EmotionItem";
-import { EmotionListWrapper } from "../styles/EmotionItem";
 import { BUTTON_TYPES } from "../constants/buttonType";
+import { MOVE, PATH_URL, MESSAGES } from "../constants/stringValues";
 
 const DiaryEditor = ({ isEdit, originData }) => {
 
@@ -30,7 +30,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
       return;
     }
 
-    if (window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")) {
+    if (window.confirm(isEdit ? MESSAGES.GO_EDIT : MESSAGES.GO_CREATE)) {
       if (!isEdit) {
         onCreate(date, content, emotion);
       } else {
@@ -38,13 +38,13 @@ const DiaryEditor = ({ isEdit, originData }) => {
       }
     }
 
-    navigate('/', { replace: true });
+    navigate(PATH_URL.HOME, { replace: true });
   }
 
   const handleRemove = () => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
+    if (window.confirm(MESSAGES.GO_REMOVE)) {
       onRemove(originData.id);
-      navigate('/', { replace: true });
+      navigate(PATH_URL.HOME, { replace: true });
     }
   }
 
@@ -59,14 +59,14 @@ const DiaryEditor = ({ isEdit, originData }) => {
   return (
     <div>
       <MyHeader 
-        headText={ isEdit ? "일기 수정하기" : "새로운 일기 쓰기" }
+        headText={ isEdit ? MESSAGES.HEAD_EDIT_TEXT : MESSAGES.HEAD_CREATE_TEXT }
         leftChild={<MyButton 
-          text={"< 뒤로가기"}
+          text={MOVE.BACK_TEXT}
           onClick={() => navigate(-1)}
         />}
         rightChild={ isEdit && (
           <MyButton 
-            text={"삭제하기"}
+            text={MOVE.REMOVE}
             type={BUTTON_TYPES.NEGATIVE}
             onClick={handleRemove}
           />
@@ -100,13 +100,13 @@ const DiaryEditor = ({ isEdit, originData }) => {
             ref={contentRef} 
             value={content} 
             onChange={(e) => setContent(e.target.value)}
-            placeholder="오늘은 어땠나요?"
+            placeholder={MESSAGES.INIT_TEXTAREA}
           />
       </section>
       <section>
         <ControlBox>
-          <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
-          <MyButton text={"작성완료"} type={BUTTON_TYPES.POSITIVE} onClick={handleSubmit}/>
+          <MyButton text={MOVE.CANCLE} onClick={() => navigate(-1)} />
+          <MyButton text={MOVE.COMPLETED} type={BUTTON_TYPES.POSITIVE} onClick={handleSubmit}/>
         </ControlBox>
       </section>
     </div>
