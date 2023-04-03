@@ -3,7 +3,7 @@ import MyHeader from '../components/MyHeader';
 import MyButton from '../components/MyButton';
 import { DiaryStateContext } from '../contexts/DiaryContext';
 import DiaryList from '../components/DiaryList';
-import { MOVE } from '../constants/stringValues';
+import { MOVE, TAG_ID, TITLES } from '../constants/stringValues';
 import { CONTENT, DATE_NUMBERS } from '../constants/numberValues';
 
 const Home = () => {
@@ -14,6 +14,11 @@ const Home = () => {
   const diaryList = useContext(DiaryStateContext);
 
   const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + DATE_NUMBERS.START_DATE}월`;
+
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName(TAG_ID.TITLE)[0];
+    titleElement.innerHTML = `${TITLES.MAIN}`;
+  }, []);
 
   useEffect(() => {
 
