@@ -1,4 +1,9 @@
-import { CREATE, REMOVE, EDIT } from '../constants/actionTypes';
+import { INIT, CREATE, REMOVE, EDIT } from '../constants/actionTypes';
+
+export const initDiary = (diaryList) => ({
+  type: INIT,
+  data: diaryList
+});
 
 export const createDiary = (date, content, emotion, dataId) => ({
   type: CREATE,

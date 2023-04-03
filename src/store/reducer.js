@@ -25,6 +25,9 @@ const reducer = (state, action) => {
     default :
       return state;
   }
+
+  localStorage.setItem('diary', JSON.stringify(newState));
+
   return newState;
 }
 

@@ -1,18 +1,30 @@
-import React, { useContext, useReducer, useRef } from "react";
+import React, { useContext, useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { DiaryStateContext, DiaryDispatchContext } from "./contexts/DiaryContext";
-import { createDiary, removeDiary, editDiary } from './store/actions';
+import { initDiary, createDiary, removeDiary, editDiary } from './store/actions';
 import reducer from "./store/reducer";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
-import dummyData from "./data/dummyData";
 
 function App() {
 
-  const [ data, dispatch ] = useReducer(reducer, dummyData);
-  const dataId = useRef(6);
+  const [ data, dispatch ] = useReducer(reducer, []);
+  const dataId = useRef(1);
+
+  useEffect(() => {
+    const localData = localStorage.getItem('diary');
+    console.log(localData)
+    
+    
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort((a, b) => parseInt(b.id) - parseInt(a.id));
+      dataId.current = parseInt(diaryList[0].id) + 1;
+
+      dispatch(initDiary(diaryList));
+    }
+  }, [])
 
   const onCreate = (date, content, emotion) => {
     dispatch(createDiary(date, content, emotion, dataId.current));
