@@ -1,3 +1,4 @@
+import React from "react";
 import MenuSelect from "../styles/MenuSelect";
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
@@ -12,4 +13,4 @@ const ControlMenu = ({ value, onChange, optionList }) => {
   )
 }
 
-export default ControlMenu;
+export default React.memo(ControlMenu);

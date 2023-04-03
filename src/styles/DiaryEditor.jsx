@@ -1,20 +1,17 @@
+import React from "react";
 import styled from "styled-components";
 
-export const DiaryEditor = styled.div`
-
-`;
-
-export const Section = styled.section`
+export const Section = React.memo(styled.section`
   margin-bottom: 40px;
-`;
+`);
 
-export const MainText = styled.h4`
+export const MainText = React.memo(styled.h4`
   font-size: 22px;
   font-weight: bold;
   margin: 30px 0px;
-`;
+`);
 
-export const InputDate = styled.input`
+export const InputDate = React.memo(styled.input`
   border: none;
   border-radius: 5px;
   background-color: #ececec;
@@ -22,9 +19,9 @@ export const InputDate = styled.input`
   cursor: pointer;
   font-family: "Nanum Pen Script";
   font-size: 20px;
-`;
+`);
 
-export const Textarea = styled.textarea`
+export const Textarea = React.memo(styled.textarea`
   font-family: "Nanum Pen Script";
   font-size: 20px;
   box-sizing: border-box;
@@ -35,10 +32,10 @@ export const Textarea = styled.textarea`
   border-radius: 5px;
   background-color: #ececec;
   padding: 20px;
-`;
+`);
 
-export const ControlBox = styled.div`
+export const ControlBox = React.memo(styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`);

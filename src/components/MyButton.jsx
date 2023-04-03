@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import Button from '../styles/Button';
 import { BUTTON_TYPES } from '../constants/buttonType';
 
@@ -19,4 +20,4 @@ MyButton.defaultProps = {
   type: BUTTON_TYPES.DEFAULT,
 };
 
-export default MyButton;
+export default memo(MyButton);

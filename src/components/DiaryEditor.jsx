@@ -1,4 +1,4 @@
-import { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "../contexts/DiaryContext";
 import MyHeader from "./MyHeader";
@@ -20,9 +20,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
-  const handleClickEmote = (emotion) => {
-    setEmotion(emotion);
-  }
+  const handleClickEmote = useCallback((emotion) => {
+    setEmotion((prevEmotion) => emotion);
+  }, []);
 
   const handleSubmit = () => {
     if (content.length < 1) {
@@ -113,4 +113,4 @@ const DiaryEditor = ({ isEdit, originData }) => {
   );
 }
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);

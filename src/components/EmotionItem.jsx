@@ -1,3 +1,4 @@
+import React from "react";
 import { EmotionItemWrapper } from "../styles/EmotionItem";
 import { emotions } from "../data/emotions";
 
@@ -26,4 +27,4 @@ const EmotionItem = ({
   )
 }
 
-export default EmotionItem;
+export default React.memo(EmotionItem);

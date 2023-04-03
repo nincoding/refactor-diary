@@ -59,7 +59,6 @@ const DiaryList = ({ diaryList }) => {
       </div>
       </MenuWrapper>
       { getProcessedDiaryList().map((it) => (
-        //<div key={it.id}>{it.content} {it.emotion}</div>
         <DiaryItem key={it.id} {...it}/>
       ))}
     </div>
