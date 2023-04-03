@@ -8,6 +8,7 @@ import MyButton from "./MyButton";
 import MenuWrapper from "../styles/MenuWrapper";
 import DiaryItem from "./DiaryItem";
 import { MOVE, PATH_URL } from "../constants/stringValues";
+import { EMOTION } from "../constants/numberValues";
 
 const DiaryList = ({ diaryList }) => {
 
@@ -20,9 +21,9 @@ const DiaryList = ({ diaryList }) => {
 
     const filterCallback = (item) => {
       if (filter === FILTER_OPTIONS.GOOD) {
-        return parseInt(item.emotion) <= 3;
+        return parseInt(item.emotion) <= EMOTION.MIDDLE_NUMBER;
       } else {
-        return parseInt(item.emotion) > 3;
+        return parseInt(item.emotion) > EMOTION.MIDDLE_NUMBER;
       }
     }
 

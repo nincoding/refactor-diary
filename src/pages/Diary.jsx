@@ -8,6 +8,7 @@ import { emotionList, emotions } from "../data/emotions";
 import { DiaryEmotionWrapper, DiarySection, DiaryText } from "../styles/EmotionWrapper";
 import { DiaryContent, DiaryWrapper } from "../styles/DiaryDetail";
 import { MOVE, PATH_URL, MESSAGES, TITLES, TAG_ID } from "../constants/stringValues";
+import { EMOTION, MOVE_CONTROLL } from "../constants/numberValues";
 
 const Diary = () => {
 
@@ -42,13 +43,13 @@ const Diary = () => {
     const currentEmotionData = emotionList.find(
       (it) => parseInt(it.emotion_id) === parseInt(data.emotion)
     );
-    const { color } = emotions[currentEmotionData.emotion_id - 1];
+    const { color } = emotions[currentEmotionData.emotion_id - EMOTION.INIT_NUMBER];
 
     return (
       <div className="DiaryPage">
         <MyHeader 
           headText={`${getStringDate(new Date(data.date))} 기록`}
-          leftChild={<MyButton text={MOVE.BACK} onClick={() => navigate(-1)}/>}
+          leftChild={<MyButton text={MOVE.BACK} onClick={() => navigate(MOVE_CONTROLL.BACK_NUMBER)}/>}
           rightChild={<MyButton text={MOVE.EDIT} onClick={() => navigate(`${PATH_URL.EDIT_FRONT}${data.id}`)} />}
         />
         <article>

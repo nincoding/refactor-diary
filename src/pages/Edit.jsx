@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { DiaryStateContext } from "../contexts/DiaryContext";
 import DiaryEditor from "../components/DiaryEditor";
 import { PATH_URL, MESSAGES, TITLES, TAG_ID } from "../constants/stringValues";
+import { CONTENT } from "../constants/numberValues";
 
 const Edit = () => {
 
@@ -18,7 +19,7 @@ const Edit = () => {
   }, []);
 
   useEffect(() => {
-    if (diaryList.length >= 1) {
+    if (diaryList.length >= CONTENT.MIN_LENGTH) {
       const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id))
 
       if (targetDiary) {

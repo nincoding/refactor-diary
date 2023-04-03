@@ -9,11 +9,12 @@ import { emotionList } from "../data/emotions";
 import EmotionItem from "./EmotionItem";
 import { BUTTON_TYPES } from "../constants/buttonType";
 import { MOVE, PATH_URL, MESSAGES } from "../constants/stringValues";
+import { MOVE_CONTROLL, EMOTION, CONTENT } from "../constants/numberValues";
 
 const DiaryEditor = ({ isEdit, originData }) => {
 
   const [ date, setDate ] = useState(getStringDate(new Date()));
-  const [ emotion, setEmotion ] = useState(3);
+  const [ emotion, setEmotion ] = useState(EMOTION.MIDDLE_NUMBER);
   const [ content, setContent ] = useState("");
 
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   }, []);
 
   const handleSubmit = () => {
-    if (content.length < 1) {
+    if (content.length < CONTENT.MIN_LENGTH) {
       contentRef.current.focus();
       return;
     }
@@ -62,7 +63,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
         headText={ isEdit ? MESSAGES.HEAD_EDIT_TEXT : MESSAGES.HEAD_CREATE_TEXT }
         leftChild={<MyButton 
           text={MOVE.BACK_TEXT}
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(MOVE_CONTROLL.BACK_NUMBER)}
         />}
         rightChild={ isEdit && (
           <MyButton 
@@ -105,7 +106,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
       </section>
       <section>
         <ControlBox>
-          <MyButton text={MOVE.CANCLE} onClick={() => navigate(-1)} />
+          <MyButton text={MOVE.CANCLE} onClick={() => navigate(MOVE_CONTROLL.BACK_NUMBER)} />
           <MyButton text={MOVE.COMPLETED} type={BUTTON_TYPES.POSITIVE} onClick={handleSubmit}/>
         </ControlBox>
       </section>

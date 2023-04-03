@@ -1,6 +1,7 @@
 import React from "react";
 import { EmotionItemWrapper } from "../styles/EmotionItem";
 import { emotions } from "../data/emotions";
+import { EMOTION } from "../constants/numberValues";
 
 const EmotionItem = ({ 
   emotion_id, 
@@ -10,7 +11,7 @@ const EmotionItem = ({
   isSelected, 
 }) => {
 
-  const { color } = emotions[emotion_id - 1];
+  const { color } = emotions[emotion_id - EMOTION.INIT_NUMBER];
 
   return (
     <EmotionItemWrapper 

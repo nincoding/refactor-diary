@@ -4,6 +4,7 @@ import MyButton from '../components/MyButton';
 import { DiaryStateContext } from '../contexts/DiaryContext';
 import DiaryList from '../components/DiaryList';
 import { MOVE } from '../constants/stringValues';
+import { CONTENT, DATE_NUMBERS } from '../constants/numberValues';
 
 const Home = () => {
 
@@ -12,41 +13,37 @@ const Home = () => {
   
   const diaryList = useContext(DiaryStateContext);
 
-  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
+  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + DATE_NUMBERS.START_DATE}월`;
 
   useEffect(() => {
 
-    if (diaryList.length >= 1) {
+    if (diaryList.length >= CONTENT.MIN_LENGTH) {
 
     const firstDay = new Date(
       curDate.getFullYear(),
       curDate.getMonth(),
-      1
+      DATE_NUMBERS.START_DATE
     ).getTime();
 
     const lastDay = new Date(
       curDate.getFullYear(),
-      curDate.getMonth() + 1,
-      0,
-      23,
-      59,
-      59
+      curDate.getMonth() + DATE_NUMBERS.START_DATE,
+      DATE_NUMBERS.ZERO,
+      DATE_NUMBERS.END_HOUR,
+      DATE_NUMBERS.END_TIME,
+      DATE_NUMBERS.END_TIME
     ).getTime();
 
     setData(diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay));
 
   }}, [diaryList, curDate]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const increaseMonth = () => {
-    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate()));
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + DATE_NUMBERS.START_DATE, curDate.getDate()));
   }
 
   const decreaseMonth = () => {
-    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate()));
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - DATE_NUMBERS.START_DATE, curDate.getDate()));
   }
 
   return (

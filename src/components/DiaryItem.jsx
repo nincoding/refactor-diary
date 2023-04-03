@@ -7,10 +7,11 @@ import InfoWrapper from "../styles/InfoWrapper";
 import BtnWrapper from "../styles/BtnWrapper";
 import MyButton from "./MyButton";
 import { MOVE, PATH_URL } from "../constants/stringValues";
+import { EMOTION, CONTENT } from "../constants/numberValues";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
 
-  const { name, color } = emotions[emotion - 1];
+  const { name, color } = emotions[emotion - EMOTION.INIT_NUMBER];
   const strDate = new Date(parseInt(date)).toLocaleDateString();
   const navigate = useNavigate();
 
@@ -32,7 +33,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
           {strDate}
         </div>
         <div className="diary_content_preview">
-          {content.slice(0, 25)}
+          {content.slice(CONTENT.NO_LENGTH, CONTENT.MAX_LENGTH)}
         </div>
       </InfoWrapper>
       <BtnWrapper>

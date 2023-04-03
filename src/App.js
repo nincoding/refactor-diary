@@ -8,10 +8,11 @@ import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
 import { PATH_URL, LOCAL_STORAGE_KEY } from "./constants/stringValues";
+import { ID_CONTROLL } from "./constants/numberValues";
 
 function App() {
 
-  const dataId = useRef(1);
+  const dataId = useRef(ID_CONTROLL.MIN_ID);
 
   const [ data, dispatch ] = useReducer(reducer, [], 
     (initialState) => {
@@ -25,7 +26,7 @@ function App() {
 
   const onCreate = (date, content, emotion) => {
     dispatch(createDiary(date, content, emotion, dataId.current));
-    dataId.current += 1;
+    dataId.current += ID_CONTROLL.MIN_ID;
   };
 
   const onRemove = (targetId) => {
