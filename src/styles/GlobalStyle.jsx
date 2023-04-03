@@ -31,6 +31,14 @@ const GlobalStyle = createGlobalStyle`
       width: 90vw;
     }
   }
+  section {
+    margin-bottom: 40px;
+  }
+  .emotion_list_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 2%;
+  }
 `;
 
 export default GlobalStyle;

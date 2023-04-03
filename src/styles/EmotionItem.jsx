@@ -23,9 +23,3 @@ export const EmotionItemWrapper = styled.div`
     font-size: 18px;
   }
 `;
-
-export const EmotionListWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  gap: 2%;
-`;

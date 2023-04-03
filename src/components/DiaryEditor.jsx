@@ -4,7 +4,7 @@ import { DiaryDispatchContext } from "../contexts/DiaryContext";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import getStringDate from "../utils/getStringDate";
-import { Section, MainText, InputDate, Textarea, ControlBox } from "../styles/DiaryEditor";
+import { MainText, InputDate, Textarea, ControlBox } from "../styles/DiaryEditor";
 import { emotionList } from "../data/emotions";
 import EmotionItem from "./EmotionItem";
 import { EmotionListWrapper } from "../styles/EmotionItem";
@@ -21,7 +21,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = useCallback((emotion) => {
-    setEmotion((prevEmotion) => emotion);
+    setEmotion(emotion);
   }, []);
 
   const handleSubmit = () => {
@@ -72,7 +72,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
           />
         )}
       />
-      <Section>
+      <section>
         <MainText>오늘은 언제인가요?</MainText>
           <InputDate 
             className="input-date"
@@ -80,10 +80,10 @@ const DiaryEditor = ({ isEdit, originData }) => {
             onChange={(e) => setDate(e.target.value)}
             type="date"
           />
-      </Section>
-      <Section>
+      </section>
+      <section>
         <MainText>오늘의 감정</MainText>
-        <EmotionListWrapper>
+        <div className="emotion_list_wrapper">
           {emotionList.map((it) => (
             <EmotionItem 
               key={it.emotion_id} 
@@ -92,9 +92,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
               isSelected={it.emotion_id === emotion}
             />
           ))}
-        </EmotionListWrapper>
-      </Section>
-      <Section>
+        </div>
+      </section>
+      <section>
         <MainText>오늘의 일기</MainText>
           <Textarea 
             ref={contentRef} 
@@ -102,13 +102,13 @@ const DiaryEditor = ({ isEdit, originData }) => {
             onChange={(e) => setContent(e.target.value)}
             placeholder="오늘은 어땠나요?"
           />
-      </Section>
-      <Section>
+      </section>
+      <section>
         <ControlBox>
           <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
           <MyButton text={"작성완료"} type={BUTTON_TYPES.POSITIVE} onClick={handleSubmit}/>
         </ControlBox>
-      </Section>
+      </section>
     </div>
   );
 }
